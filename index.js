@@ -6,9 +6,9 @@ import cors from 'cors'
 import { registerValidation, loginValidation, postCreateValidation } from './validations.js';
 import {UserController, PostController} from './controllers/index.js';
 import {handleValidationErrors, checkAuth} from './utils/index.js';
-
+// mongodb+srv://admin:wwwwww@cluster0.witomxf.mongodb.net/blog?retryWrites=true&w=majority
 mongoose
-    .connect("mongodb+srv://admin:wwwwww@cluster0.witomxf.mongodb.net/blog?retryWrites=true&w=majority")
+    .connect(process.env.MONGODB_URI)
     .then(() => console.log('DB ok'))
     .catch((err) => console.log('DB error', err))
 
@@ -44,7 +44,7 @@ app.post('/posts', checkAuth, postCreateValidation, handleValidationErrors, Post
 app.delete('/posts/:id', checkAuth, PostController.remove);  //? удаления одного статья;
 app.patch('/posts/:id', checkAuth, handleValidationErrors, PostController.update); //? изменения и обновления одного статя;
 
-const PORT=process.env.PORT||80
+const PORT=process.env.PORT||4444
 app.listen(PORT, (err) => {
     if (err) {
         return console.log(err)
