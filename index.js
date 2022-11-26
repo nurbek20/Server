@@ -68,20 +68,3 @@ app.listen(process.env.PORT || 8000, (err) => {
 
   console.log('Server OK');
 });
-
-
-// const start = async () => {
-//     try {
-//         await mongoose.connect(config.get("dbUrl"), {
-//             useNewUrlParser:true,
-//             useUnifiedTopology:true
-//         })
-
-//         app.listen(PORT, () => {
-//             console.log('Server started on port ', PORT)
-//         })
-//     } catch (e) {
-//         console.log(e)
-//     }
-// }
-// start()
