@@ -2,13 +2,10 @@ import express from 'express';
 import fs from 'fs';
 import multer from 'multer';
 import cors from 'cors';
-
 import mongoose from 'mongoose';
 
 import { registerValidation, loginValidation, postCreateValidation } from './validations.js';
-
 import { handleValidationErrors, checkAuth } from './utils/index.js';
-
 import { UserController, PostController } from './controllers/index.js';
 
 mongoose
@@ -65,6 +62,5 @@ app.listen(process.env.PORT || 8000, (err) => {
   if (err) {
     return console.log(err);
   }
-
   console.log('Server OK');
 });
